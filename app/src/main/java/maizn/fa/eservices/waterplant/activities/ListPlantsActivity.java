@@ -32,7 +32,7 @@ public class ListPlantsActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_plants);
 
-        plantAdapter = new PlantAdapter(this,plantDao.loadAll());
+        plantAdapter = new PlantAdapter(this, plantDao.loadAll());
         listView.setAdapter(plantAdapter);
     }
 
@@ -43,7 +43,7 @@ public class ListPlantsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         updatePlants();
     }
@@ -57,9 +57,9 @@ public class ListPlantsActivity extends AppCompatActivity {
                 Plant plant = (Plant) parent.getAdapter().getItem(position);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("PLANT_DETAIL", plant);
-                Intent intent = new Intent(ListPlantsActivity.this,PlantDetailActivity.class);
+                Intent intent = new Intent(ListPlantsActivity.this, PlantDetailActivity.class);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,PLANT_DETAIL);
+                startActivityForResult(intent, PLANT_DETAIL);
             }
         });
 
@@ -74,14 +74,14 @@ public class ListPlantsActivity extends AppCompatActivity {
         });
     }
 
-    public void updatePlants(){
-        listView.setAdapter(new PlantAdapter(this,plantDao.loadAll()));
+    public void updatePlants() {
+        listView.setAdapter(new PlantAdapter(this, plantDao.loadAll()));
     }
 
     @Override
-    public void onActivityResult(int requestCode,int resultCode,Intent data){
-        if(requestCode == PLANT_DETAIL){
-            if(resultCode == RESULT_OK){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLANT_DETAIL) {
+            if (resultCode == RESULT_OK) {
                 updatePlants();
             }
         }

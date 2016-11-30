@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import org.greenrobot.greendao.query.Query;
-
 import java.util.Date;
 import java.util.Random;
 
@@ -30,33 +28,33 @@ public class MainActivity extends AppCompatActivity {
         plantDao = daoSession.getPlantDao();
     }
 
-    public void listPlants(View view){
-        startActivity(new Intent(MainActivity.this,ListPlantsActivity.class));
+    public void listPlants(View view) {
+        startActivity(new Intent(MainActivity.this, ListPlantsActivity.class));
     }
 
-    public void createPlantActivity(View view){
-        startActivity(new Intent(MainActivity.this,AddPlantActivity.class));
+    public void createPlantActivity(View view) {
+        startActivity(new Intent(MainActivity.this, AddPlantActivity.class));
     }
 
-    public void populate(View view){
-        String[] plants = {"Acajou","Achillée","Amarante","Camphrier","Plante du frigo","Chardon","Mage-royale","Feuille-Argent","Pacifique","Hélianthèmes ","Iris","Julienne"};
+    public void populate(View view) {
+        String[] plants = {"Acajou", "Achillée", "Amarante", "Camphrier", "Plante du frigo", "Chardon", "Mage-royale", "Feuille-Argent", "Pacifique", "Hélianthèmes ", "Iris", "Julienne"};
         Plant plant;
         Random random = new Random();
-        for (int i=0;i<plants.length;i++){
-            plant = new Plant(null,plants[i],random.nextInt(30)+1,new Date());
+        for (int i = 0; i < plants.length; i++) {
+            plant = new Plant(null, plants[i], random.nextInt(30) + 1, new Date());
             plantDao.insert(plant);
-            Log.d("DaoExample", "Inserted new Plant, ID: " + plant.getId() + " and Name:" +plant.getPlantName());
+            Log.d("DaoExample", "Inserted new Plant, ID: " + plant.getId() + " and Name:" + plant.getPlantName());
         }
 
-        Toast.makeText(this,"Des plantes ont été générés",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Des plantes ont été générés", Toast.LENGTH_SHORT).show();
     }
 
-    public void deleteAllPlants(View view){
+    public void deleteAllPlants(View view) {
         plantDao.deleteAll();
-        Toast.makeText(this,"Toutes les plantes ont été supprimés",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Toutes les plantes ont été supprimés", Toast.LENGTH_SHORT).show();
     }
 
-    public void changeDate(View view){
+    public void changeDate(View view) {
         startActivityForResult(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS), 0);
     }
 }

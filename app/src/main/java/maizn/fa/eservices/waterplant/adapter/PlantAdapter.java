@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import org.joda.time.LocalDate;
 
-import java.util.Date;
 import java.util.List;
 
 import maizn.fa.eservices.waterplant.R;
@@ -21,18 +20,18 @@ import maizn.fa.eservices.waterplant.entities.Plant;
 public class PlantAdapter extends ArrayAdapter<Plant> {
 
     public PlantAdapter(Context context, List<Plant> plants) {
-        super(context, 0,plants);
+        super(context, 0, plants);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_plants,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_plants, parent, false);
         }
 
         PlantViewHolder plantViewHolder = (PlantViewHolder) convertView.getTag();
-        if(plantViewHolder == null){
+        if (plantViewHolder == null) {
             plantViewHolder = new PlantViewHolder();
             plantViewHolder.plantName = (TextView) convertView.findViewById(R.id.plant_name);
             convertView.setTag(plantViewHolder);
@@ -42,12 +41,12 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
         LocalDate date = LocalDate.now();
         LocalDate lastWateringConverted = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
 
-        if(lastWateringConverted.isBefore(date)){
-            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorRedCoquelicot));
-        }else if(lastWateringConverted.isAfter(date)){
-            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBottleGreen));
-        }else{
-            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBurnedOrange));
+        if (lastWateringConverted.isBefore(date)) {
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorRedCoquelicot));
+        } else if (lastWateringConverted.isAfter(date)) {
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorBottleGreen));
+        } else {
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorBurnedOrange));
         }
 
         plantViewHolder.plantName.setText(plant.getPlantName());
@@ -56,7 +55,7 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
     }
 
 
-    private class PlantViewHolder{
+    private class PlantViewHolder {
         public TextView plantName;
     }
 }

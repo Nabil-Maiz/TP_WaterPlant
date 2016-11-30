@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.Date;
-import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
-public class Plant implements Parcelable{
+public class Plant implements Parcelable {
 
     @Id(autoincrement = true)
     private Long id;
@@ -27,7 +27,7 @@ public class Plant implements Parcelable{
 
     @Generated(hash = 1586953843)
     public Plant(Long id, @NotNull String plantName,
-            @NotNull Integer wateringFrequency, @NotNull Date lastWatering) {
+                 @NotNull Integer wateringFrequency, @NotNull Date lastWatering) {
         this.id = id;
         this.plantName = plantName;
         this.wateringFrequency = wateringFrequency;
@@ -83,7 +83,7 @@ public class Plant implements Parcelable{
         dest.writeSerializable(lastWatering);
     }
 
-    private Plant(Parcel in){
+    private Plant(Parcel in) {
         this.id = in.readLong();
         this.plantName = in.readString();
         this.wateringFrequency = in.readInt();
@@ -91,8 +91,8 @@ public class Plant implements Parcelable{
     }
 
     public static final Creator CREATOR =
-            new Parcelable.Creator(){
-                public Plant createFromParcel(Parcel in){
+            new Parcelable.Creator() {
+                public Plant createFromParcel(Parcel in) {
                     return new Plant(in);
                 }
 

@@ -1,7 +1,7 @@
 package maizn.fa.eservices.waterplant.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,17 +28,17 @@ public class AddPlantActivity extends AppCompatActivity {
         plantDao = daoSession.getPlantDao();
     }
 
-    public void createPlant(View view){
+    public void createPlant(View view) {
         editPlantName = (EditText) findViewById(R.id.edit_add_plant_name);
         editWateringFrequency = (EditText) findViewById(R.id.edit_add_watering_frequency);
 
         String plantName = editPlantName.getText().toString();
         Integer wateringFrequency = Integer.parseInt(editWateringFrequency.getText().toString());
 
-        Plant plant = new Plant(null,plantName,wateringFrequency,new Date());
+        Plant plant = new Plant(null, plantName, wateringFrequency, new Date());
         plantDao.insert(plant);
 
-        Toast.makeText(this,"La plante " + plant.getPlantName() + " a bien été ajoutée.",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "La plante " + plant.getPlantName() + " a bien été ajoutée.", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

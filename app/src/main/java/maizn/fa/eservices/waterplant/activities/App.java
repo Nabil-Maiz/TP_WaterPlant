@@ -11,15 +11,15 @@ public class App extends Application {
     private DaoSession daoSession;
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"plant-db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "plant-db");
         SQLiteDatabase database = helper.getWritableDatabase();
         daoSession = new DaoMaster(database).newSession();
     }
 
-    public DaoSession getDaoSession(){
+    public DaoSession getDaoSession() {
         return this.daoSession;
     }
 }
