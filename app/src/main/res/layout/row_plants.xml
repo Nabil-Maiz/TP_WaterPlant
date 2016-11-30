@@ -6,7 +6,7 @@
 
     <TextView
         android:textSize="18sp"
-        android:text="Nom de la plante"
+        android:text="@string/text_plant_name"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:id="@+id/plant_name"

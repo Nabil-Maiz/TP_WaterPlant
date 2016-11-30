@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.Date;
+
 import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.adapter.PlantAdapter;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
@@ -58,6 +60,16 @@ public class ListPlantsActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListPlantsActivity.this,PlantDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,PLANT_DETAIL);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Plant plant = (Plant) parent.getAdapter().getItem(position);
+                plant.setLastWatering(new Date());
+                updatePlants();
+                return true;
             }
         });
     }
