@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 
-import java.util.Date;
-
 import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.adapter.PlantAdapter;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
@@ -52,16 +50,20 @@ public class ListPlantsActivity extends AppCompatActivity {
     }
 
     private void myElementDetail() {
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Plant plant = (Plant) parent.getAdapter().getItem(position);
+
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("PLANT_DETAIL", plant);
+
                 Intent intent = new Intent(ListPlantsActivity.this, PlantDetailActivity.class);
                 intent.putExtras(bundle);
+
                 startActivityForResult(intent, PLANT_DETAIL);
             }
         });
@@ -69,10 +71,12 @@ public class ListPlantsActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Plant plant = (Plant) parent.getAdapter().getItem(position);
 
                 LocalDate jodaCurrentDate = LocalDate.fromDateFields(MainActivity.currentDate);
                 LocalDate jodaNextWateringDate = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
+
                 if(jodaCurrentDate.isAfter(jodaNextWateringDate) || jodaCurrentDate.isEqual(jodaNextWateringDate)){
                     plant.setLastWatering(MainActivity.currentDate);
                     Toast.makeText(getApplicationContext(),"La plante a été arrosée",Toast.LENGTH_SHORT).show();
@@ -89,6 +93,7 @@ public class ListPlantsActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == PLANT_DETAIL) {
             if (resultCode == RESULT_OK) {
                 updatePlants();

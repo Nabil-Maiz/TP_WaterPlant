@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populate(View view) {
+
         String[] plants = {"Acajou", "Achillée", "Amarante", "Camphrier", "Plante du frigo", "Chardon", "Mage-royale", "Feuille-Argent", "Pacifique", "Hélianthèmes ", "Iris", "Julienne"};
         Plant plant;
         Random random = new Random();
+
         for (int i = 0; i < plants.length; i++) {
             plant = new Plant(null, plants[i], random.nextInt(30) + 1, MainActivity.currentDate);
             plantDao.insert(plant);

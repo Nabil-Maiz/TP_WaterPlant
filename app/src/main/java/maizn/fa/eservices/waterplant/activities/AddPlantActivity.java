@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Date;
-
 import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
 import maizn.fa.eservices.waterplant.entities.Plant;
@@ -29,6 +27,7 @@ public class AddPlantActivity extends AppCompatActivity {
     }
 
     public void createPlant(View view) {
+
         editPlantName = (EditText) findViewById(R.id.edit_add_plant_name);
         editWateringFrequency = (EditText) findViewById(R.id.edit_add_watering_frequency);
 

@@ -47,6 +47,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     }
 
     public void deletePlant(View view) {
+
         if (plant != null) {
             plantDao.deleteByKey(plant.getId());
             setResult(RESULT_OK, new Intent());
@@ -55,6 +56,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     }
 
     public void updatePlant(View view) {
+
         if (plant != null) {
             plantName = ((EditText) findViewById(R.id.edit_plant_name));
             wateringFrequency = (EditText) findViewById(R.id.edit_watering_frequency);

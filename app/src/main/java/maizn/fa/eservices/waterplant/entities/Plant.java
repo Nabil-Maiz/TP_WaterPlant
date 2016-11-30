@@ -77,6 +77,7 @@ public class Plant implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
         dest.writeLong(id);
         dest.writeString(plantName);
         dest.writeInt(wateringFrequency);
@@ -84,6 +85,7 @@ public class Plant implements Parcelable {
     }
 
     private Plant(Parcel in) {
+
         this.id = in.readLong();
         this.plantName = in.readString();
         this.wateringFrequency = in.readInt();
