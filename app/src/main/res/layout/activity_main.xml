@@ -50,4 +50,14 @@
         android:layout_below="@+id/populate_db"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/button_change_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/delete_db"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:id="@+id/button_change_date"
+        android:onClick="changeDate"/>
 </RelativeLayout>

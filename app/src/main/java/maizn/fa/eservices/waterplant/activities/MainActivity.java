@@ -55,4 +55,8 @@ public class MainActivity extends AppCompatActivity {
         plantDao.deleteAll();
         Toast.makeText(this,"Toutes les plantes ont été supprimés",Toast.LENGTH_SHORT).show();
     }
+
+    public void changeDate(View view){
+        startActivityForResult(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS), 0);
+    }
 }

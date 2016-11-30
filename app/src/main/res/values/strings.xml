@@ -10,4 +10,5 @@
     <string name="textview_last_watering">Dernier arrosage : </string>
     <string name="button_add_plant">Ajouter une plante</string>
     <string name="button_create_plant">Créer la plante</string>
+    <string name="button_change_date">Changer la date</string>
 </resources>
