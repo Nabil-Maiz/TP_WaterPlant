@@ -18,6 +18,8 @@ public class PlantDetailActivity extends AppCompatActivity {
 
     private Plant plant;
     private PlantDao plantDao;
+    private EditText plantName;
+    EditText wateringFrequency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,8 @@ public class PlantDetailActivity extends AppCompatActivity {
     public void onStart(){
         super.onStart();
 
-        EditText plantName  = ((EditText) findViewById(R.id.edit_plant_name));
-        EditText wateringFrequency = (EditText) findViewById(R.id.edit_watering_frequency);
+        plantName  = ((EditText) findViewById(R.id.edit_plant_name));
+        wateringFrequency = (EditText) findViewById(R.id.edit_watering_frequency);
         TextView lastWatering = (TextView) findViewById(R.id.text_last_watering_value);
 
         plantName.setText(plant.getPlantName());
@@ -51,6 +53,21 @@ public class PlantDetailActivity extends AppCompatActivity {
             plantDao.deleteByKey(plant.getId());
             setResult(RESULT_OK,new Intent());
             finish();
+        }
+    }
+
+    public void updatePlant(View view){
+        if(plant != null){
+            plantName  = ((EditText) findViewById(R.id.edit_plant_name));
+            wateringFrequency = (EditText) findViewById(R.id.edit_watering_frequency);
+
+            if(plantName != null && wateringFrequency != null){
+                plant.setPlantName(plantName.getText().toString());
+                plant.setWateringFrequency(Integer.parseInt(wateringFrequency.getText().toString()));
+                plantDao.update(plant);
+                setResult(RESULT_OK,new Intent());
+                finish();
+            }
         }
     }
 }

@@ -20,8 +20,6 @@ import maizn.fa.eservices.waterplant.entities.PlantDao;
 public class MainActivity extends AppCompatActivity {
 
     private PlantDao plantDao;
-    private Query<Plant> plantQuery;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void listPlants(View view){
         startActivity(new Intent(MainActivity.this,ListPlantsActivity.class));
+    }
+
+    public void createPlantActivity(View view){
+        startActivity(new Intent(MainActivity.this,AddPlantActivity.class));
     }
 
     public void populate(View view){

@@ -8,4 +8,6 @@
     <string name="button_update_plant">Modifier</string>
     <string name="button_delete_plant">Supprimer</string>
     <string name="textview_last_watering">Dernier arrosage : </string>
+    <string name="button_add_plant">Ajouter une plante</string>
+    <string name="button_create_plant">Créer la plante</string>
 </resources>

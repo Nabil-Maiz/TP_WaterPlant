@@ -31,13 +31,23 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        android:text="@string/button_add_plant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_list_plants"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:id="@+id/button_add_plant"
+        android:onClick="createPlantActivity"/>
+
+    <Button
         android:text="@string/button_delete_db"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/delete_db"
         android:onClick="deleteAllPlants"
+        android:layout_marginTop="36dp"
         android:layout_below="@+id/populate_db"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="45dp" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
