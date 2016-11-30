@@ -1,12 +1,17 @@
 package maizn.fa.eservices.waterplant.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.joda.time.LocalDate;
+
+import java.util.Date;
 import java.util.List;
 
 import maizn.fa.eservices.waterplant.R;
@@ -34,7 +39,19 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
         }
 
         Plant plant = getItem(position);
+        LocalDate date = LocalDate.now();
+        LocalDate lastWateringConverted = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
+
+        if(lastWateringConverted.isBefore(date)){
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorRedCoquelicot));
+        }else if(lastWateringConverted.isAfter(date)){
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBottleGreen));
+        }else{
+            convertView.setBackgroundColor(Color.YELLOW);
+        }
+
         plantViewHolder.plantName.setText(plant.getPlantName());
+        plantViewHolder.plantName.setTextColor(Color.WHITE);
         return convertView;
     }
 
