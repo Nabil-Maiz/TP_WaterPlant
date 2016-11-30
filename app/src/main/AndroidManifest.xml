@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:label="@string/button_list_plants" android:name=".activities.ListPlantsActivity" />
-        <activity android:label="activity_plant_detail" android:name=".activities.PlantDetailActivity" />
+        <activity android:label="@string/activity_plant_detail" android:name=".activities.PlantDetailActivity" />
         <activity android:label="@string/button_add_plant" android:name=".activities.AddPlantActivity" />
         <activity android:label="@string/button_change_date" android:name=".activities.ChangeDateActivity"></activity>
     </application>

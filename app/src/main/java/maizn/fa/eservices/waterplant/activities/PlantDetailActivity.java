@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 
@@ -61,6 +62,7 @@ public class PlantDetailActivity extends AppCompatActivity {
         if (plant != null) {
             plantDao.deleteByKey(plant.getId());
             setResult(RESULT_OK, new Intent());
+            Toast.makeText(this,"La plante " + plant.getPlantName()+ " a été supprimée",Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -76,6 +78,7 @@ public class PlantDetailActivity extends AppCompatActivity {
                 plant.setWateringFrequency(Integer.parseInt(wateringFrequency.getText().toString()));
                 plantDao.update(plant);
                 setResult(RESULT_OK, new Intent());
+                Toast.makeText(this,"La plante " + plant.getPlantName()+ " a été modifiée",Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
