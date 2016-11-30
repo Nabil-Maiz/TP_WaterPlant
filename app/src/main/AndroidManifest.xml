@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".activities.ListPlantsActivity" />
         <activity android:name=".activities.PlantDetailActivity" />
-        <activity android:name=".activities.AddPlantActivity"></activity>
+        <activity android:name=".activities.AddPlantActivity" />
+        <activity android:name=".activities.ChangeDateActivity"></activity>
     </application>
 
 </manifest>

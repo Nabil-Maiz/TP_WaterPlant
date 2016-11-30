@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -67,7 +68,8 @@ public class ListPlantsActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Plant plant = (Plant) parent.getAdapter().getItem(position);
-                plant.setLastWatering(new Date());
+                plant.setLastWatering(MainActivity.currentDate);
+                Toast.makeText(getApplicationContext(),"La plante a été arrosée",Toast.LENGTH_SHORT).show();
                 updatePlants();
                 return true;
             }

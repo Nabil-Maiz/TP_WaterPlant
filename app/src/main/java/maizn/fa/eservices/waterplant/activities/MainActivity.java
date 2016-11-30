@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import org.joda.time.LocalDate;
+
 import java.util.Date;
 import java.util.Random;
 
@@ -18,6 +20,8 @@ import maizn.fa.eservices.waterplant.entities.PlantDao;
 public class MainActivity extends AppCompatActivity {
 
     private PlantDao plantDao;
+
+    public static Date currentDate = new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Plant plant;
         Random random = new Random();
         for (int i = 0; i < plants.length; i++) {
-            plant = new Plant(null, plants[i], random.nextInt(30) + 1, new Date());
+            plant = new Plant(null, plants[i], random.nextInt(30) + 1, MainActivity.currentDate);
             plantDao.insert(plant);
-            Log.d("DaoExample", "Inserted new Plant, ID: " + plant.getId() + " and Name:" + plant.getPlantName());
         }
 
         Toast.makeText(this, "Des plantes ont été générés", Toast.LENGTH_SHORT).show();
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeDate(View view) {
-        startActivityForResult(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS), 0);
+        Intent intent = new Intent(MainActivity.this,ChangeDateActivity.class);
+        startActivity(intent);
     }
 }

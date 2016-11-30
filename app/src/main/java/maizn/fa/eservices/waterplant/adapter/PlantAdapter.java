@@ -14,6 +14,7 @@ import org.joda.time.LocalDate;
 import java.util.List;
 
 import maizn.fa.eservices.waterplant.R;
+import maizn.fa.eservices.waterplant.activities.MainActivity;
 import maizn.fa.eservices.waterplant.entities.Plant;
 
 
@@ -38,7 +39,7 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
         }
 
         Plant plant = getItem(position);
-        LocalDate date = LocalDate.now();
+        LocalDate date = LocalDate.fromDateFields(MainActivity.currentDate);
         LocalDate lastWateringConverted = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
 
         if (lastWateringConverted.isBefore(date)) {

@@ -35,7 +35,7 @@ public class AddPlantActivity extends AppCompatActivity {
         String plantName = editPlantName.getText().toString();
         Integer wateringFrequency = Integer.parseInt(editWateringFrequency.getText().toString());
 
-        Plant plant = new Plant(null, plantName, wateringFrequency, new Date());
+        Plant plant = new Plant(null, plantName, wateringFrequency, MainActivity.currentDate);
         plantDao.insert(plant);
 
         Toast.makeText(this, "La plante " + plant.getPlantName() + " a bien été ajoutée.", Toast.LENGTH_SHORT).show();
