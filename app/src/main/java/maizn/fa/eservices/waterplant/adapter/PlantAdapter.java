@@ -47,7 +47,7 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
         }else if(lastWateringConverted.isAfter(date)){
             convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBottleGreen));
         }else{
-            convertView.setBackgroundColor(Color.YELLOW);
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBurnedOrange));
         }
 
         plantViewHolder.plantName.setText(plant.getPlantName());
