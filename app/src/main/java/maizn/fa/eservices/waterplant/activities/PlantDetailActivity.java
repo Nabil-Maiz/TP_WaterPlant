@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.joda.time.LocalDate;
+
+import java.text.SimpleDateFormat;
+
 import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
 import maizn.fa.eservices.waterplant.entities.Plant;
@@ -40,10 +44,16 @@ public class PlantDetailActivity extends AppCompatActivity {
         plantName = ((EditText) findViewById(R.id.edit_plant_name));
         wateringFrequency = (EditText) findViewById(R.id.edit_watering_frequency);
         TextView lastWatering = (TextView) findViewById(R.id.text_last_watering_value);
+        TextView nextWatering = (TextView) findViewById(R.id.textView_next_watering_value);
 
         plantName.setText(plant.getPlantName());
         wateringFrequency.setText(plant.getWateringFrequency() + "");
-        lastWatering.setText(plant.getLastWatering().toString());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        lastWatering.setText(dateFormat.format(plant.getLastWatering()));
+
+        LocalDate plantDate = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
+        nextWatering.setText(dateFormat.format(plantDate.toDate()));
     }
 
     public void deletePlant(View view) {

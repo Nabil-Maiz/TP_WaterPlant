@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WaterPlant</string>
+    <string name="app_name">Water Plant</string>
     <string name="button_populate">Génerer des plantes</string>
     <string name="button_delete_db">Supprimer toutes les plantes</string>
     <string name="button_list_plants">Liste des plantes</string>
@@ -8,8 +8,10 @@
     <string name="button_update_plant">Modifier</string>
     <string name="button_delete_plant">Supprimer</string>
     <string name="textview_last_watering">Dernier arrosage : </string>
+    <string name="text_next_watering_value">Prochain arrosage : </string>
     <string name="button_add_plant">Ajouter une plante</string>
     <string name="button_create_plant">Créer la plante</string>
     <string name="button_change_date">Changer la date</string>
     <string name="button_save_date">Sauvegarder la date</string>
+    <string name="activity_plant_detail">Détail de la plante</string>
 </resources>

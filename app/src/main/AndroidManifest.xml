@@ -9,17 +9,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:label="@string/app_name" android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ListPlantsActivity" />
-        <activity android:name=".activities.PlantDetailActivity" />
-        <activity android:name=".activities.AddPlantActivity" />
-        <activity android:name=".activities.ChangeDateActivity"></activity>
+        <activity android:label="@string/button_list_plants" android:name=".activities.ListPlantsActivity" />
+        <activity android:label="activity_plant_detail" android:name=".activities.PlantDetailActivity" />
+        <activity android:label="@string/button_add_plant" android:name=".activities.AddPlantActivity" />
+        <activity android:label="@string/button_change_date" android:name=".activities.ChangeDateActivity"></activity>
     </application>
 
 </manifest>
