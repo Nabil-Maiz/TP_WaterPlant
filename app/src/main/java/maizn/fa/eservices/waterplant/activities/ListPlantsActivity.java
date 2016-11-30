@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.joda.time.LocalDate;
+
 import java.util.Date;
 
 import maizn.fa.eservices.waterplant.R;
@@ -68,9 +70,14 @@ public class ListPlantsActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Plant plant = (Plant) parent.getAdapter().getItem(position);
-                plant.setLastWatering(MainActivity.currentDate);
-                Toast.makeText(getApplicationContext(),"La plante a été arrosée",Toast.LENGTH_SHORT).show();
-                updatePlants();
+
+                LocalDate jodaCurrentDate = LocalDate.fromDateFields(MainActivity.currentDate);
+                LocalDate jodaNextWateringDate = LocalDate.fromDateFields(plant.getLastWatering()).plusDays(plant.getWateringFrequency());
+                if(jodaCurrentDate.isAfter(jodaNextWateringDate) || jodaCurrentDate.isEqual(jodaNextWateringDate)){
+                    plant.setLastWatering(MainActivity.currentDate);
+                    Toast.makeText(getApplicationContext(),"La plante a été arrosée",Toast.LENGTH_SHORT).show();
+                    updatePlants();
+                }
                 return true;
             }
         });
