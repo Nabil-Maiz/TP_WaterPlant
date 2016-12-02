@@ -10,6 +10,10 @@ import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.Date;
 
+/*
+ * Entité plante : définie par un nom, une fréquence d'arrosage et une date de dernier arrosage
+ * L'interface Parcelable est implémenté pour permettre l'envoi de l'objet au changement d'activité
+ */
 @Entity
 public class Plant implements Parcelable {
 

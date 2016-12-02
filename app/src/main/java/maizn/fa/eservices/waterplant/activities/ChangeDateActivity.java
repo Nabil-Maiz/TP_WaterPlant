@@ -22,8 +22,13 @@ public class ChangeDateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_date);
 
+
         calendarView = (CalendarView) findViewById(R.id.calendarView);
+
+        // on définit la date au démarrage de calendarView de cette manière
         calendarView.setDate(MainActivity.currentDate.getTime());
+
+        // au click sur une date on stock la valeur selectionnée
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
@@ -33,6 +38,7 @@ public class ChangeDateActivity extends AppCompatActivity {
         });
     }
 
+    // cette fonction permet de sauvegarder la date et donner un feedback utilisateur
     public void saveDate(View view){
         MainActivity.currentDate = date;
         Toast.makeText(this,"La date a été sauvegardée",Toast.LENGTH_SHORT).show();
