@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 
+import java.util.List;
+
 import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.adapter.PlantAdapter;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
@@ -34,8 +36,18 @@ public class ListPlantsActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_plants);
 
+
+
+        // on charge toutes les plantes de la base
+        List<Plant> plants =  plantDao.loadAll();
+
+        // si il n'y a aucune plante dans la base on redirige vers ajouter une plante
+        if(plants.isEmpty()){
+            startActivity(new Intent(ListPlantsActivity.this,AddPlantActivity.class));
+        }
+
         // initialisation de l'adapter avec une liste contenant toutes les plantes de la base de données
-        plantAdapter = new PlantAdapter(this, plantDao.loadAll());
+        plantAdapter = new PlantAdapter(this,plants);
         listView.setAdapter(plantAdapter);
     }
 

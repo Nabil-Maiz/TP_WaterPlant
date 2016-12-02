@@ -1,5 +1,6 @@
 package maizn.fa.eservices.waterplant.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,9 @@ import maizn.fa.eservices.waterplant.R;
 import maizn.fa.eservices.waterplant.entities.DaoSession;
 import maizn.fa.eservices.waterplant.entities.Plant;
 import maizn.fa.eservices.waterplant.entities.PlantDao;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 /*
  * Classe permettant d'ajouter une plante
  */
@@ -27,6 +31,13 @@ public class AddPlantActivity extends AppCompatActivity {
         //Récupération du DAO
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         plantDao = daoSession.getPlantDao();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent =new Intent(AddPlantActivity.this,MainActivity.class);
+        intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void createPlant(View view) {
