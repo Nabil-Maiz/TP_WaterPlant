@@ -88,18 +88,21 @@ public class PlantDetailActivity extends AppCompatActivity {
             if (plantName != null && wateringFrequency != null) {
 
                 // on change les informations si ces dernières ont changées
-                plant.setPlantName(plantName.getText().toString());
-                plant.setWateringFrequency(Integer.parseInt(wateringFrequency.getText().toString()));
+                if(!plantName.getText().toString().equals(plant.getPlantName()) || Integer.parseInt(wateringFrequency.getText().toString()) != plant.getWateringFrequency()){
 
-                // on met a jour la plante
-                plantDao.update(plant);
+                    plant.setPlantName(plantName.getText().toString());
+                    plant.setWateringFrequency(Integer.parseInt(wateringFrequency.getText().toString()));
 
-                // on indique à la liste que l'operation s'est bien passée
-                setResult(RESULT_OK, new Intent());
+                    // on met a jour la plante
+                    plantDao.update(plant);
 
-                // puis retour utilisateur et fin de l'activité
-                Toast.makeText(this,"La plante " + plant.getPlantName()+ " a été modifiée",Toast.LENGTH_SHORT).show();
-                finish();
+                    // on indique à la liste que l'operation s'est bien passée
+                    setResult(RESULT_OK, new Intent());
+
+                    // puis retour utilisateur et fin de l'activité
+                    Toast.makeText(this,"La plante " + plant.getPlantName()+ " a été modifiée",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         }
     }
